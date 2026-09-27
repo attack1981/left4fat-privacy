@@ -41,7 +41,7 @@
 <h1>Политика конфиденциальности Left4Fat</h1>
 <p class="updated">Последнее обновление: сентябрь 2026</p>
 
-<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude and DeepSeek. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
+<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude and DeepSeek — via the developer's Cloudflare server, which never stores request content and keeps only request counters (random install ID, hashed IP, date) for 7 days. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
 
 <p>Left4Fat («Приложение») — приложение для подсчёта калорий с распознаванием еды по фото. Ниже — честное и полное описание того, какие данные обрабатываются и как.</p>
 
@@ -62,6 +62,7 @@
   <li><strong>для разборов приёмов пищи и советов ИИ-тренера</strong> — записанная еда, ваши нормы и данные профиля: пол, возраст, цель, процент жира тела, обхват талии, сожжённые калории — сервису Claude (Anthropic).</li>
 </ul>
 <p>Имя, email, контакты и Apple ID сервисам ИИ не передаются.</p>
+<p>Все запросы к ИИ сначала попадают на сервер разработчика (Cloudflare, ai-proxy.attack1981.workers.dev), а уже он передаёт их сервисам ИИ через посредников api.tkbk.io (Claude) и llms.dotpoin.com (DeepSeek). Сервер разработчика <strong>не сохраняет содержимое запросов</strong> — ни фото, ни текст. Он хранит только счётчики для дневного лимита запросов: случайный номер установки приложения, хеш IP-адреса, дату и количество запросов. Счётчики удаляются через неделю.</p>
 
 <h3>Поиск продуктов</h3>
 <p>Если продукта нет в базе приложения, название продукта (текст запроса, без личных данных) может отправляться в открытую базу <a href="https://world.openfoodfacts.org">Open Food Facts</a>, откуда приложение берёт данные о пищевой ценности (лицензия ODbL).</p>
