@@ -39,9 +39,9 @@
 <body>
 
 <h1>Политика конфиденциальности Left4Fat</h1>
-<p class="updated">Последнее обновление: октябрь 2026</p>
+<p class="updated">Последнее обновление: ноябрь 2026</p>
 
-<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude, DeepSeek and MiMo (Xiaomi) — via the developer's Cloudflare server, which never stores request content and keeps only request counters (random install ID, hashed IP, date) for 7 days. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
+<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude, DeepSeek and MiMo (Xiaomi) — via the developer's Cloudflare server, which never stores request content and keeps only request counters (random install ID, hashed IP, date) for 7 days. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Blood test results you enter are kept on the device and in your private iCloud backup, never shared with family members, and sent to AI only with a separate opt-in. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
 
 <p>Left4Fat («Приложение») — приложение для подсчёта калорий с распознаванием еды по фото. Ниже — честное и полное описание того, какие данные обрабатываются и как.</p>
 
@@ -59,7 +59,8 @@
   <li><strong>фото еды и этикеток</strong> (сжатые, без геолокации и EXIF) — сервису Claude (Anthropic) через прокси-сервер посредника, для распознавания продуктов и расчёта калорий/БЖУ;</li>
   <li><strong>текстовые и голосовые описания еды</strong> (голос распознаётся средствами Apple, ИИ получает только текст) — сервисам DeepSeek, MiMo (Xiaomi) и Claude (Anthropic): описание получает один из них, а следующий — только если предыдущий не ответил;</li>
   <li><strong>описание своего продукта</strong> («Добавить свой продукт по описанию») — сервису DeepSeek, а если он недоступен — MiMo (Xiaomi) и затем Claude (Anthropic);</li>
-  <li><strong>для разборов приёмов пищи, оценки витаминов и минералов и советов ИИ-тренера</strong> — записанная еда, ваши нормы и данные профиля: пол, возраст, цель, процент жира тела, обхват талии, сожжённые калории — сервисам DeepSeek, MiMo (Xiaomi) и Claude (Anthropic): запрос получает один из них, а следующий — только если предыдущий не ответил.</li>
+  <li><strong>для разборов приёмов пищи, оценки витаминов и минералов и советов ИИ-тренера</strong> — записанная еда, ваши нормы и данные профиля: пол, возраст, цель, процент жира тела, обхват талии, сожжённые калории — сервисам DeepSeek, MiMo (Xiaomi) и Claude (Anthropic): запрос получает один из них, а следующий — только если предыдущий не ответил;</li>
+  <li><strong>результаты анализов крови</strong> (последние значения не старше полугода, см. «Анализы крови» ниже) — к тем же запросам для советов ИИ-тренера и оценки витаминов и минералов, <strong>только по отдельному согласию</strong>: Настройки → Разрешения → «Анализы в советах ИИ». Для распознавания еды анализы не отправляются.</li>
 </ul>
 <p>Имя, email, контакты и Apple ID сервисам ИИ не передаются.</p>
 <p>Все запросы к ИИ сначала попадают на сервер разработчика (Cloudflare, ai-proxy.attack1981.workers.dev), а уже он передаёт их сервисам ИИ через посредников api.tkbk.io (Claude) и llms.dotpoin.com (DeepSeek и MiMo). Сервер разработчика <strong>не сохраняет содержимое запросов</strong> — ни фото, ни текст. Он хранит только счётчики для дневного лимита запросов: случайный номер установки приложения, хеш IP-адреса, дату и количество запросов. Счётчики удаляются через неделю.</p>
@@ -78,8 +79,12 @@
 <h3>История питания и профиль</h3>
 <p>Записи о приёмах пищи (продукты, БЖУ, дата, фото еды) и настройки профиля хранятся локально на устройстве и синхронизируются в ваше <strong>приватное</strong> облако iCloud (CloudKit) — доступ к нему есть только у вас через ваш Apple ID. Туда же сохраняется резервная копия (кроме данных из Apple Здоровья).</p>
 
+<h3>Анализы крови (по желанию)</h3>
+<p>В разделе Профиль → «Анализы» можно ввести результаты анализов: глюкоза и инсулин натощак, гликированный гемоглобин (HbA1c), ТТГ, ферритин, витамин D. Приложение использует их, чтобы точнее подобрать нормы (например, долю углеводов) и показать предупреждение, если значение стоит обсудить с врачом. Это не медицинская рекомендация и не диагноз.</p>
+<p>Анализы хранятся <strong>локально на устройстве</strong> и попадают в вашу резервную копию в <strong>приватном</strong> iCloud. Участникам «Семьи» они не передаются. Сервисам ИИ — только по отдельному согласию (см. раздел об ИИ выше). Удалить любой анализ можно в его истории.</p>
+
 <h3>Функция «Семья»</h3>
-<p>Если вы присоединяетесь к семейной группе, её участникам становятся видны: ваше отображаемое имя и фото профиля, записи о приёмах пищи (список блюд, калории, БЖУ, дата, уменьшенная копия фото еды), добавленные вами продукты, ваши дневные нормы калорий и БЖУ, прогресс в общих челленджах. Вес, процент жира тела и другие данные из Apple Здоровья участникам не передаются. Эти данные хранятся в общей базе CloudKit приложения, и приложение показывает их только участникам вашей группы.</p>
+<p>Если вы присоединяетесь к семейной группе, её участникам становятся видны: ваше отображаемое имя и фото профиля, записи о приёмах пищи (список блюд, калории, БЖУ, дата, уменьшенная копия фото еды), добавленные вами продукты, ваши дневные нормы калорий и БЖУ, прогресс в общих челленджах. Вес, процент жира тела, анализы крови и другие данные из Apple Здоровья участникам не передаются. Эти данные хранятся в общей базе CloudKit приложения, и приложение показывает их только участникам вашей группы.</p>
 
 <h2>Push-уведомления</h2>
 <p>Напоминания (о воде, челленджах, дневной норме) формируются локально на устройстве. Тексты разборов после приёма пищи и советов ИИ-тренера составляет ИИ (DeepSeek или Claude от Anthropic) по данным, перечисленным в разделе об ИИ, — только с вашего согласия. Уведомления о новых записях в семейной группе приходят от участников вашей группы.</p>
