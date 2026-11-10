@@ -41,7 +41,7 @@
 <h1>Политика конфиденциальности Left4Fat</h1>
 <p class="updated">Последнее обновление: ноябрь 2026</p>
 
-<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude, DeepSeek and MiMo (Xiaomi) — via the developer's Cloudflare server, which never stores request content and keeps only request counters (random install ID, hashed IP, date) for 7 days. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Blood test results you enter are kept on the device and in your private iCloud backup, never shared with family members, and sent to AI only with a separate opt-in. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
+<p class="en">This document is in Russian, the app's primary language. In short: only with your consent, Left4Fat sends food photos and descriptions (and, for tips, your logged meals and basic profile data) to third-party AI — Anthropic Claude, DeepSeek and MiMo (Xiaomi) — via the developer's Cloudflare server, which never stores request content and keeps only request counters (random install ID, hashed IP, date) for 7 days. It reads Apple Health data and writes only water intake; Apple Health data is never stored in iCloud or shared with family members. Blood test results you enter are kept on the device and in your private iCloud backup, never shared with family members, and sent to AI only with a separate opt-in. Your data syncs via your own iCloud account. No account/password, no ads, no analytics/tracking SDKs. The Telegram mini app is different: it identifies you by your Telegram ID and stores your profile, food diary, water and weight log on the developer's Cloudflare server (not in iCloud); food photos are never stored; you can delete everything in Profile → "Delete my data". Contact: <a href="mailto:storozhevskaya.8@gmail.com">storozhevskaya.8@gmail.com</a>.</p>
 
 <p>Left4Fat («Приложение») — приложение для подсчёта калорий с распознаванием еды по фото. Ниже — честное и полное описание того, какие данные обрабатываются и как.</p>
 
@@ -63,7 +63,7 @@
   <li><strong>результаты анализов крови</strong> (последние значения не старше полугода, см. «Анализы крови» ниже) — к тем же запросам для советов ИИ-тренера и оценки витаминов и минералов, <strong>только по отдельному согласию</strong>: Настройки → Разрешения → «Анализы в советах ИИ». Для распознавания еды анализы не отправляются.</li>
 </ul>
 <p>Имя, email, контакты и Apple ID сервисам ИИ не передаются.</p>
-<p>Все запросы к ИИ сначала попадают на сервер разработчика (Cloudflare, ai-proxy.attack1981.workers.dev), а уже он передаёт их сервисам ИИ через посредников api.tkbk.io (Claude) и llms.dotpoin.com (DeepSeek и MiMo). Сервер разработчика <strong>не сохраняет содержимое запросов</strong> — ни фото, ни текст. Он хранит только счётчики для дневного лимита запросов: случайный номер установки приложения, хеш IP-адреса, дату и количество запросов. Счётчики удаляются через неделю.</p>
+<p>Все запросы к ИИ сначала попадают на сервер разработчика (Cloudflare, ai-proxy.attack1981.workers.dev), а уже он передаёт их сервисам ИИ через посредников api.tkbk.online (Claude и DeepSeek) и llms.dotpoin.com (DeepSeek и MiMo). Сервер разработчика <strong>не сохраняет содержимое запросов</strong> — ни фото, ни текст. Он хранит только счётчики для дневного лимита запросов: случайный номер установки приложения, хеш IP-адреса, дату и количество запросов. Счётчики удаляются через неделю.</p>
 
 <h3>Поиск продуктов</h3>
 <p>Если продукта нет в базе приложения, название продукта (текст запроса, без личных данных) может отправляться в открытую базу <a href="https://world.openfoodfacts.org">Open Food Facts</a>, откуда приложение берёт данные о пищевой ценности (лицензия ODbL).</p>
@@ -86,6 +86,37 @@
 <h3>Функция «Семья»</h3>
 <p>Если вы присоединяетесь к семейной группе, её участникам становятся видны: ваше отображаемое имя и фото профиля, записи о приёмах пищи (список блюд, калории, БЖУ, дата, уменьшенная копия фото еды), добавленные вами продукты, ваши дневные нормы калорий и БЖУ, прогресс в общих челленджах. Вес, процент жира тела и другие данные из Apple Здоровья, а также анализы крови участникам не передаются. Эти данные хранятся в общей базе CloudKit приложения, и приложение показывает их только участникам вашей группы.</p>
 
+<h2 id="telegram">Мини-приложение в Telegram</h2>
+<p>У Left4Fat есть версия внутри Telegram (мини-приложение и бот). Она работает отдельно от приложения для iPhone и устроена иначе — всё, что написано в этом разделе, относится только к ней.</p>
+<div class="box">
+  Главное отличие: в мини-приложении нет iCloud, поэтому ваши данные хранятся <strong>на сервере разработчика</strong> (Cloudflare) и привязаны к номеру вашей учётной записи Telegram (Telegram ID). Пароль и регистрация по-прежнему не нужны.
+</div>
+<h3>Что хранится на сервере</h3>
+<ul>
+  <li><strong>Telegram ID</strong> — чтобы отличать вас от других людей. Telegram подтверждает его подписью при каждом открытии мини-приложения;</li>
+  <li><strong>профиль:</strong> пол, возраст, рост, вес, обхват талии (по желанию), уровень активности и цель;</li>
+  <li><strong>журнал веса</strong> — значения, которые вы записываете сами;</li>
+  <li><strong>дневник питания:</strong> названия блюд и продуктов, их вес, калории, белки, жиры и углеводы, дата и время записи;</li>
+  <li><strong>выпитая вода</strong> по дням;</li>
+  <li><strong>настройки напоминаний</strong> (если вы их включили): какие напоминания нужны, смещение вашего часового пояса и ваши дневные нормы.</li>
+</ul>
+<p>Ваше имя, имя пользователя и фото из Telegram мини-приложение показывает на экране, но <strong>на сервере не сохраняет</strong>. Номер телефона мини-приложение не получает. <strong>Фото еды и этикеток не сохраняются</strong>: они передаются на распознавание и сразу после ответа отбрасываются.</p>
+<h3>ИИ в мини-приложении — только с вашего согласия</h3>
+<p>Перед первым распознаванием мини-приложение спрашивает согласие. Отметка о согласии хранится в облачном хранилище Telegram для вашей учётной записи и на устройстве. С согласием передаются:</p>
+<ul>
+  <li><strong>фото еды и этикеток</strong> (сжатые) — сервису Claude (Anthropic);</li>
+  <li><strong>текстовые описания еды</strong> — сервисам DeepSeek и Claude (Anthropic): описание получает один из них, а следующий — только если предыдущий не ответил.</li>
+</ul>
+<p>Профиль, вес, Telegram ID и имя сервисам ИИ не передаются. Запросы идут через тот же сервер разработчика и тех же посредников, что описаны в разделе об ИИ выше; содержимое запросов сервер не сохраняет. Для дневного лимита распознаваний хранятся только счётчики: Telegram ID, хеш IP-адреса, дата и количество запросов — они удаляются через неделю. Без согласия еду можно добавлять из базы продуктов или вручную.</p>
+<h3>Поиск продуктов</h3>
+<p>При поиске в Open Food Facts название продукта отправляется туда через сервер разработчика — без Telegram ID и других сведений о вас.</p>
+<h3>Сообщения от бота</h3>
+<p>Бот пишет вам только если вы сами включили напоминания в «Профиле»: о воде (когда вы отстаёте от нормы) и итог дня. Текст составляется на сервере из ваших записей за день, ИИ в этом не участвует. Сообщения доставляет Telegram. Выключить напоминания можно там же; если вы заблокируете бота, они выключатся сами.</p>
+<h3>Telegram</h3>
+<p>Мини-приложение работает внутри Telegram, поэтому сам Telegram обрабатывает данные вашей учётной записи и переписку с ботом по <a href="https://telegram.org/privacy">своей политике конфиденциальности</a>.</p>
+<h3>Удаление данных</h3>
+<p>«Профиль» → «Удалить мои данные» сразу и безвозвратно стирает с сервера ваш профиль, журнал веса, дневник питания, воду и настройки напоминаний, а также отметку о согласии на ИИ. Отдельную запись дневника можно удалить в любой момент. Если мини-приложение недоступно, напишите на адрес из раздела «Контакты» — удалим по вашему Telegram ID.</p>
+
 <h2>Push-уведомления</h2>
 <p>Напоминания (о воде, челленджах, дневной норме) формируются локально на устройстве. Тексты разборов после приёма пищи и советов ИИ-тренера составляет ИИ (DeepSeek или Claude от Anthropic) по данным, перечисленным в разделе об ИИ, — только с вашего согласия. Уведомления о новых записях в семейной группе приходят от участников вашей группы.</p>
 
@@ -98,7 +129,7 @@
 </ul>
 
 <h2>Хранение и удаление данных</h2>
-<p>Вы можете в любой момент удалить отдельные записи истории питания прямо в приложении. Полное удаление всех данных приложения (включая копию в iCloud) происходит при удалении приложения с устройства и удалении его данных из iCloud (Настройки iPhone → [ваше имя] → iCloud → Управление хранилищем).</p>
+<p>(Для мини-приложения в Telegram — см. раздел выше.) Вы можете в любой момент удалить отдельные записи истории питания прямо в приложении. Полное удаление всех данных приложения (включая копию в iCloud) происходит при удалении приложения с устройства и удалении его данных из iCloud (Настройки iPhone → [ваше имя] → iCloud → Управление хранилищем).</p>
 
 <h2>Изменения политики</h2>
 <p>Мы можем обновлять эту политику при изменении функциональности приложения. Актуальная версия всегда доступна по этой ссылке.</p>
